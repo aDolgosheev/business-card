@@ -1,0 +1,29 @@
+server:
+  port: ${PORT:8080}
+  compression:
+    enabled: true
+
+spring:
+  application:
+    name: business-card
+  config:
+    import: classpath:profile.yml
+  datasource:
+    # Файловая H2: сообщения из формы переживают перезапуск. Лежит в ./data рядом с проектом.
+    url: jdbc:h2:file:./data/business-card;AUTO_SERVER=TRUE
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  h2:
+    console:
+      enabled: ${H2_CONSOLE:true}
+      path: /h2-console
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
