@@ -42,6 +42,8 @@ class BusinessCardApplicationTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Александр Долгошеев"))
                 .andExpect(jsonPath("$.contacts[*].type").value(hasItem("github")))
+                .andExpect(jsonPath("$.experience[0].company").value(not(emptyString())))
+                .andExpect(jsonPath("$.experience[0].highlights[0]").value(not(emptyString())))
                 .andExpect(jsonPath("$.projects[0].name").value(not(emptyString())));
     }
 

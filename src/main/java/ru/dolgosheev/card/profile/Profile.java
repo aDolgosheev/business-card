@@ -14,12 +14,16 @@ public record Profile(
         String location,
         String about,
         List<Contact> contacts,
+        List<Experience> experience,
         List<SkillGroup> skills,
         List<Project> projects,
         List<Education> education
 ) {
 
     public record Contact(String type, String label, String url) {
+    }
+
+    public record Experience(String company, String role, String period, List<String> highlights) {
     }
 
     public record SkillGroup(String group, List<String> items) {
